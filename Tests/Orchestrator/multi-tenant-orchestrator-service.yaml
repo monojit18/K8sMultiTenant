@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multi-tenant-orchestrator-svc
+  namespace: multi-tenant-dev
+spec:
+  selector:
+    app: multi-tenant-orchestrator-pod
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 7071
+  type: LoadBalancer

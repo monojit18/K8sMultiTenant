@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: template-deploy
+    tenant: template-tenant
+  name: template-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: template-pod
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: template-pod
+    spec:      
+      containers:
+      - image: nginx:alpine
+        name: template-app
+        resources: {}        
+      nodeSelector:
+        agentpool: template-pool

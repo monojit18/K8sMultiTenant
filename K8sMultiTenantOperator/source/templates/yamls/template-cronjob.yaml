@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  labels:
+    tenant: template-tenant
+  name: template-cronjob
+spec:
+  schedule: ""
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: template-app
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            command: []        
+          restartPolicy: Never

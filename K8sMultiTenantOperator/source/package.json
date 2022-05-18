@@ -1,0 +1,32 @@
+{
+  "name": "k8smultitenantoperator",
+  "version": "1.0.0",
+  "description": "Custom K8s Deploy App",
+  "main": "server/k8sMultiTenantOperator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "mkdir -p logs",
+    "install": "npm install --save-dev express body-parser dotenv crypto swagger-ui-express swagger-jsdoc@5.0.1 @kubernetes/client-node",
+    "start": "node server/k8sMultiTenantOperator.js 1> logs/k8sMultiTenantOperator.log 2>& 1"
+  },
+  "keywords": [
+    "k8s REST API",
+    "k8s MultiTenant Provider API"
+  ],
+  "author": "Monojit Datta",
+  "license": "MIT",
+  "devDependencies": {
+    "@azure/ms-rest-azure-js": "^2.1.0",
+    "@azure/ms-rest-nodeauth": "^3.0.9",
+    "@kubernetes/client-node": "^0.14.3",
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "swagger-jsdoc": "^5.0.1",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "dependencies": {}
+}

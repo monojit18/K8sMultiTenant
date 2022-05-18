@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: template-pvc
+  labels:
+    app: template-pvc
+    tenant: template-tenant
+spec:
+  storageClassName: template-sc
+  accessModes: []
+  resources:
+    requests:
+      storage: 1Gi

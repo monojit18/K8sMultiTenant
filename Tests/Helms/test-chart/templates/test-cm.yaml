@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-cm
+  namespace: prana-dev-ns
+data:
+{{- $files := .Files }}
+  kubeconfig: |
+  {{ required "A valid kubeconfig entry is required" .Values.kubeconfig | nindent 4 }}
+
+deploy-cm: {{ required "A valid deploy entry is required" .Values.deploy }}
+

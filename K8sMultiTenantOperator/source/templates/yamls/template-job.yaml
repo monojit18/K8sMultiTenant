@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:    
+    tenant: template-tenant
+  name: template-job
+spec:
+  template:    
+    spec:
+      containers:
+      - image: busybox
+        command: []
+        name: template-app
+        resources:
+          requests: {}
+      restartPolicy: Never

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ (index .Values.services 0).name }}
+  namespace: {{ (index .Values.services 0).namespace }}
+spec:
+{{ toYaml (index .Values.services 0).spec | nindent 2 }}

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ (index .Values.deployments 0).name }}
+  namespace: {{ (index .Values.deployments 0).namespace }}
+spec:
+  selector:
+    matchLabels:
+    {{ toYaml (index .Values.deployments 0).podSpec.labels | nindent 6 }}
+  replicas: {{ (index .Values.deployments 0).replicas }}
+  strategy:
+  {{ toYaml (index .Values.deployments 0).podSpec.strategy | nindent 4 }}
+  template:
+    metadata:
+      labels:
+      {{ toYaml (index .Values.deployments 0).podSpec.labels | nindent 8 }}
+    spec:
+    {{ toYaml (index .Values.deployments 0).podSpec.spec | nindent 6 }}
+
+                 

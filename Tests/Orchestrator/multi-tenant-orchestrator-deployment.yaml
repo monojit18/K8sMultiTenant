@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-tenant-orchestrator-deploy
+  namespace: multi-tenant-dev
+spec:
+  selector:
+      matchLabels:
+        app: multi-tenant-orchestrator-pod
+  replicas: 1
+  template:
+      metadata:
+        labels:
+          app: multi-tenant-orchestrator-pod
+      spec:
+        containers:        
+        - name: multi-tenant-orchestrator-app
+          image: aksltacr.azurecr.io/multi-tenant-orchestrator:v1.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "100Mi"
+              cpu: "500m"
+            limits:
+              memory: "200Mi"
+              cpu: "1"
+          ports:
+          - containerPort: 7071
+          env:
+          - name: OPERATOR_BASE_URL
+            value: "http://multi-tenant-operator-svc.multi-tenant-dev.svc"
+        nodeSelector:
+          agentpool: ltsyspool        
+                 

@@ -1,0 +1,10 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ (index .Values.ingresses 0).name }}
+  namespace: {{ (index .Values.ingresses 0).namespace }}
+  annotations:    
+  {{ toYaml (index .Values.ingresses 0).annotations | nindent 4 }}
+spec:
+{{ toYaml (index .Values.ingresses 0).spec | nindent 2 }}  
+
